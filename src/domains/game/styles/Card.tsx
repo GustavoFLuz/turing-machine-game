@@ -93,3 +93,13 @@ export const CardIcons = styled.div`
         background-color: ${props => props.theme.colors.text};
     }
 `
+
+export const Verifier = styled.div`
+    position: absolute;
+
+    height: 80%;
+    aspect-ratio: 1;
+
+    display: grid;
+    place-content: center;
+`

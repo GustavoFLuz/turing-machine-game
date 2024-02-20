@@ -1,7 +1,6 @@
 import { ColorType } from '@/types/theme'
 import { HintAttempt } from '../../../types/game'
-import { Check } from '../icons/Check'
-import { Cross } from '../icons/Cross'
+import { Check, Cross } from '../icons/'
 import { CheckboxComponent } from '../styles/NotesTable'
 
 type Props = {

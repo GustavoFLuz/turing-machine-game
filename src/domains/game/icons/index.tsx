@@ -1,3 +1,5 @@
 export * from "./Circle"
 export * from "./Triangle"
 export * from "./Square"
+export * from "./Check"
+export * from "./Cross"

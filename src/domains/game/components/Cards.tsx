@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGameContext } from '../contexts/Game';
-import { CardIcons, CardInfo, CardPaper } from '../styles/Card';
+import { CardIcons, CardInfo, CardPaper, Verifier } from '../styles/Card';
 import { CardWrapper, Wrapper } from '../styles/CardHolder';
-
+import { Check, Cross } from '../icons';
 
 type Props = {}
 export default function Cards({}: Props) {
-  const [mounted, setMounted] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
   const {hint: {list: hintList, verify: verifyHint}} = useGameContext();
-  
-  React.useEffect(() => {
+  const [verifier, setVerifier] = useState<{ slot: number, correct: boolean } | null>(null)
+
+  useEffect(() => {
     setMounted(true);
   }, []);
 
-  const checkHint = (slot: number)=>{
-    const correct = verifyHint(slot);;
+  useEffect(() => {
+    if (verifier == null) return;
+    const timeout = setTimeout(() => setVerifier(null), 2000)
+    return () => clearTimeout(timeout);
+  }, [verifier]);
+
+  const checkHint = (slot: number) => {
+    const correct = verifyHint(slot);
+    setVerifier({ slot, correct });
+    ;
   }
 
   const position = ["A", "B", "C", "D", "E", "F"]
@@ -33,6 +42,11 @@ export default function Cards({}: Props) {
                 </React.Fragment>
               )}
             </CardIcons>
+            {(verifier && verifier.slot === index) ?
+              <Verifier>
+                {verifier.correct ? <Check size="100%"/> : <Cross size="100%"/>}
+              </Verifier>
+              : <></>}
           </CardPaper>
         </CardWrapper>
       ))}
