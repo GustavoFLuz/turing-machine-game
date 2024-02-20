@@ -17,8 +17,8 @@ export default function Checkbox({ type }: Props) {
     }[type] as ColorType
 
     const icon = {
-        "correct": <Check size={"1em"} />,
-        "incorrect": <Cross size={"1em"} />,
+        "correct": <Check size="calc(1em - 8px)"/>,
+        "incorrect": <Cross size="calc(1em - 8px)"/>,
         "empty": false,
         "unused": false,
     }[type]

@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Ubuntu Mono', monospace;
         margin: 0;
         padding: 0;
+        user-select: none;
     }
 `;
 

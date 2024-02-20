@@ -7,8 +7,8 @@ export const Container = styled.div`
     justify-content: center;
     gap: 32px;
     margin-top: 32px;
-    height: 100vh;
-    font-size: 4em;
+    height: calc(100vh - 32px);
+    font-size: 42px;
 `
 
 export const SolvedTitle = styled.h1`
